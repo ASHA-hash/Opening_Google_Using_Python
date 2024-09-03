@@ -20,7 +20,7 @@ time.sleep(10)  # Adjust this to a longer period if needed
 try:
     # Close all tabs using the keyboard shortcut (Ctrl+W) in a loop
     for i in range(5):  # Adjust the number of times based on how many tabs you expect to be open
-        print("I am inside")
+        
         pyautogui.hotkey('ctrl', 'w')
         # Press and release Ctrl + W
         keyboard.press_and_release('ctrl+w')
