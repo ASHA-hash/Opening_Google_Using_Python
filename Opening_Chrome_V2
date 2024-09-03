@@ -1,0 +1,35 @@
+import os
+import signal
+import subprocess
+import time
+import psutil
+import pyautogui
+import keyboard
+
+# Path to the Google Chrome executable
+chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+
+# URL you want to open
+url = "https://www.google.com"
+
+# Command to open Google Chrome with the specified URL
+process = subprocess.Popen([chrome_path, url])
+
+# Wait for the Chrome to fully load and for the user to interact if needed
+time.sleep(10)  # Adjust this to a longer period if needed
+try:
+    # Close all tabs using the keyboard shortcut (Ctrl+W) in a loop
+    for i in range(5):  # Adjust the number of times based on how many tabs you expect to be open
+        print("I am inside")
+        pyautogui.hotkey('ctrl', 'w')
+        # Press and release Ctrl + W
+        keyboard.press_and_release('ctrl+w')
+        time.sleep(3)
+except:
+    print("All tabs are cosed")
+
+# After closing all tabs, wait for a short moment before killing the process
+time.sleep(2)
+
+# Close all instances of Google Chrome
+subprocess.Popen(['taskkill', '/F', '/IM', 'chrome.exe'])
